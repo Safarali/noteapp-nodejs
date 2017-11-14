@@ -13,13 +13,22 @@ console.log('Yargs: ', argv);
 
 
 if(command === 'add'){
-    notes.addNote(argv.title, argv.body);
+    let note = notes.addNote(argv.title, argv.body);
+    if(note) {
+        console.log('Note created');
+        console.log('-------');
+        console.log(`${note.title} : ${note.body}`);
+    } else {
+        console.log('Note title taken');
+    }
 } else if(command === 'list'){
     notes.getAll();
 } else if(command === 'read'){
     notes.getNote(argv.title);
 } else if(command === 'remove'){
-    notes.removeNote(argv.title);
+    let noteRemoved = notes.removeNote(argv.title);
+    let message = noteRemoved ?  'Note was removed' : 'Note not found';
+    console.log(message);
 } else {
     console.log('Command was not recognized');
 }
