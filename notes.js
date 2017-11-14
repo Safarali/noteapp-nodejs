@@ -50,10 +50,8 @@ let removeNote = (title) => {
 };
 
 let logNote = (note) => {
-    console.log('-----');
+    console.log(`-----${note.title}-----`);
     console.log(`${note.body}`);
-    console.log(`${note.title}`);
-    console.log('-----');
 }
 module.exports = {
     addNote,
